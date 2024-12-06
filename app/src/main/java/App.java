@@ -16,8 +16,26 @@ public class App {
             String choice = reader.readLine();
             
 
+            DataHandler dataHandler;
+
+            switch (choice) {
+                case "1":
+                    dataHandler = new CSVDataHandler();
+                    break;
+                case "2":
+                    dataHandler = new JSONDataHandler();
+                    break;
+                default:
+                    dataHandler = new CSVDataHandler();
+                    break;
+                }
+                RecipeUI recipeUI = new RecipeUI(dataHandler);
+                recipeUI.displayMenu();
+                
+
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
+
         }
     }
 }
